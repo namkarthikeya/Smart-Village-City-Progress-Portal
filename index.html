@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Smart Village & City Progress Portal</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            colors: {
+              forest: '#1d4d3e',
+              emerald: '#2a7a5e',
+              sky: '#1d7db0',
+              clay: '#d7e7dc',
+              sand: '#f7f3ea',
+            },
+            boxShadow: {
+              soft: '0 15px 35px rgba(15, 23, 42, 0.08)',
+            },
+          },
+        },
+      };
+    </script>
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body class="bg-slate-100 text-slate-800">
+    <div id="app" class="min-h-screen">
+      <section id="authScreen" class="flex min-h-screen items-center justify-center bg-gradient-to-br from-emerald-900 via-emerald-700 to-sky-700 px-4 py-10">
+        <div class="w-full max-w-6xl overflow-hidden rounded-3xl bg-white/10 shadow-soft backdrop-blur-md">
+          <div class="grid lg:grid-cols-2">
+            <div class="auth-hero flex flex-col justify-center bg-gradient-to-br from-emerald-950/80 to-emerald-700/80 p-8 text-white lg:p-12">
+              <div class="mb-6 flex items-center gap-3">
+                <div class="flex h-12 w-12 items-center justify-center rounded-2xl bg-white/10">
+                  <i data-lucide="map-pin" class="h-6 w-6"></i>
+                </div>
+                <div>
+                  <p class="text-xs uppercase tracking-[0.25em] text-emerald-200">Local governance</p>
+                  <h1 class="text-3xl font-bold">Smart Village & City Progress Portal</h1>
+                </div>
+              </div>
+              <p class="max-w-md text-emerald-100">
+                Empowering villages with transparent civic updates, public problem tracking, grievance handling, and budget visibility.
+              </p>
+              <div class="mt-8 grid gap-3 text-sm text-emerald-100 sm:grid-cols-2">
+                <div class="rounded-2xl border border-white/10 bg-white/5 p-4">
+                  <div class="mb-2 flex items-center gap-2 font-semibold text-white"><i data-lucide="bell-ring" class="h-4 w-4"></i> Updates</div>
+                  Community notices and event schedules.
+                </div>
+                <div class="rounded-2xl border border-white/10 bg-white/5 p-4">
+                  <div class="mb-2 flex items-center gap-2 font-semibold text-white"><i data-lucide="alert-circle" class="h-4 w-4"></i> Problems</div>
+                  Track public issues and suggestions.
+                </div>
+                <div class="rounded-2xl border border-white/10 bg-white/5 p-4">
+                  <div class="mb-2 flex items-center gap-2 font-semibold text-white"><i data-lucide="message-square-text" class="h-4 w-4"></i> Complaints</div>
+                  Quick reporting to municipal offices.
+                </div>
+                <div class="rounded-2xl border border-white/10 bg-white/5 p-4">
+                  <div class="mb-2 flex items-center gap-2 font-semibold text-white"><i data-lucide="wallet" class="h-4 w-4"></i> Budget</div>
+                  Financial transparency and planning.
+                </div>
+              </div>
+            </div>
+
+            <div class="bg-white p-8 lg:p-12">
+              <div class="mb-6 flex items-center justify-between">
+                <div>
+                  <p class="text-sm font-medium uppercase tracking-[0.2em] text-slate-500">Welcome</p>
+                  <h2 class="text-3xl font-bold text-slate-800">Access Portal</h2>
+                </div>
+                <div class="rounded-full bg-emerald-100 px-3 py-1 text-xs font-semibold uppercase tracking-wide text-emerald-700">Local access</div>
+              </div>
+
+              <div class="mb-6 inline-flex rounded-full bg-slate-100 p-1">
+                <button id="loginTab" class="auth-tab rounded-full px-5 py-2 text-sm font-medium text-slate-700 transition-all hover:text-slate-900">Login</button>
+                <button id="registerTab" class="auth-tab rounded-full px-5 py-2 text-sm font-medium text-slate-700 transition-all hover:text-slate-900">Register</button>
+              </div>
+
+              <div class="mb-5 flex gap-2 rounded-2xl border border-slate-200 bg-slate-50 p-1">
+                <button class="role-btn active flex-1 rounded-xl bg-white px-3 py-2 text-sm font-medium shadow-sm" data-role="admin">Admin</button>
+                <button class="role-btn flex-1 rounded-xl px-3 py-2 text-sm font-medium text-slate-600" data-role="resident">Resident</button>
+              </div>
+
+              <form id="authForm" class="space-y-4"></form>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <div id="dashboard" class="hidden min-h-screen bg-slate-50">
+        <header class="sticky top-0 z-20 border-b border-slate-200 bg-white/90 backdrop-blur-md">
+          <div class="mx-auto flex max-w-7xl items-center justify-between px-4 py-4 sm:px-6 lg:px-8">
+            <div class="flex items-center gap-3">
+              <div class="flex h-11 w-11 items-center justify-center rounded-2xl bg-emerald-100 text-emerald-700">
+                <i data-lucide="building-2" class="h-5 w-5"></i>
+              </div>
+              <div>
+                <p class="text-xs font-medium uppercase tracking-[0.2em] text-slate-500">Portal</p>
+                <h1 class="text-xl font-bold text-slate-800">Smart Village & City Progress Portal</h1>
+              </div>
+            </div>
+
+            <div class="hidden items-center gap-3 md:flex">
+              <div class="rounded-full border border-emerald-200 bg-emerald-50 px-3 py-2 text-sm font-semibold text-emerald-700">
+                <span id="villageBadge">Rampur • 500001</span>
+              </div>
+            </div>
+
+            <div class="flex items-center gap-3">
+              <div class="hidden rounded-xl border border-slate-200 bg-slate-50 px-3 py-2 text-right sm:block">
+                <div id="userName" class="text-sm font-semibold text-slate-800">Village Admin</div>
+                <div id="userRole" class="text-xs uppercase tracking-wide text-slate-500">ADMIN</div>
+              </div>
+              <button id="logoutBtn" class="inline-flex items-center gap-2 rounded-xl bg-slate-900 px-4 py-2 text-sm font-medium text-white transition hover:bg-slate-700">
+                <i data-lucide="log-out" class="h-4 w-4"></i>
+                Logout
+              </button>
+            </div>
+          </div>
+
+          <nav class="mx-auto max-w-7xl px-4 pb-4 sm:px-6 lg:px-8">
+            <div class="flex flex-wrap gap-2 rounded-2xl border border-slate-200 bg-slate-100 p-2">
+              <button class="nav-btn active inline-flex items-center gap-2 rounded-xl bg-white px-4 py-2 text-sm font-medium text-slate-800 shadow-sm" data-tab="updates">
+                <i data-lucide="calendar-days" class="h-4 w-4"></i>
+                Updates & Schedule
+              </button>
+              <button class="nav-btn inline-flex items-center gap-2 rounded-xl px-4 py-2 text-sm font-medium text-slate-600" data-tab="problems">
+                <i data-lucide="clipboard-list" class="h-4 w-4"></i>
+                Problems & Suggestions
+              </button>
+              <button class="nav-btn inline-flex items-center gap-2 rounded-xl px-4 py-2 text-sm font-medium text-slate-600" data-tab="complaints">
+                <i data-lucide="message-circle-warning" class="h-4 w-4"></i>
+                File Complaint
+              </button>
+              <button class="nav-btn inline-flex items-center gap-2 rounded-xl px-4 py-2 text-sm font-medium text-slate-600" data-tab="budget">
+                <i data-lucide="wallet" class="h-4 w-4"></i>
+                Village Budget
+              </button>
+            </div>
+          </nav>
+        </header>
+
+        <main class="mx-auto max-w-7xl px-4 py-6 sm:px-6 lg:px-8">
+          <section id="page-updates" class="page-section"></section>
+          <section id="page-problems" class="page-section hidden"></section>
+          <section id="page-complaints" class="page-section hidden"></section>
+          <section id="page-budget" class="page-section hidden"></section>
+        </main>
+      </div>
+    </div>
+
+    <div id="modalLayer" class="hidden"></div>
+
+    <script src="app.js"></script>
+  </body>
+</html>
